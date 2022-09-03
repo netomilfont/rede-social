@@ -26,8 +26,10 @@ export class Modal {
         inputPassword.placeholder = "Digite sua senha"
         btnLogin.innerText = "Logar"
         btnLogin.type = "submit"
-        btnPagRegister.innerText = "Ir para página de registo"
+        btnLogin.classList.add("btnLogin")
+        btnPagRegister.innerText = "Ir para página de registro"
         btnPagRegister.type = "submit"
+        btnPagRegister.classList.add("btnRegister")
 
         modalForm.append(h3TitleForm, inputEmail, inputPassword, btnLogin, span, btnPagRegister )
     

@@ -17,13 +17,22 @@ class Index {
             const newLoginModal = Modal.loginForm()
             Modal.template(newLoginModal)
             Index.closeModal()
-            Index.handleLogin()
+            // Index.handleLoginModal()
         })
     }
 
-    // static closeModal() {
-    //     cosnt closeModalBtn = document.querySelector
-    // }
+    static closeModal() {
+        const closeModalBtn = document.querySelector("#signupBtn")
+
+        closeModalBtn.addEventListener("click", () => {
+            const modal = document.querySelector(".modal")
+            modal.classList.add("disappear")
+
+            setTimeout(() => {
+                modal.remove()
+            }, 1000)
+        })
+    }
 
 }
 
