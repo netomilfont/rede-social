@@ -13,9 +13,10 @@ export class Requests {
 
                 setTimeout(() => {
                     window.location.replace("src/pages/dashboard.html")
-                },2000)
+                },900)
             })
             .catch((err) => {
+                console.log(err)
                 Toast.create("Essa conta não existe, logo não pode acessar a página dos posts", "red")
             })
 
