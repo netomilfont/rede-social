@@ -2,3 +2,13 @@ h1 {
     color: var(--color-white-1);
     font-weight: 500;
 }
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+span {
+    font-size: 0.7rem;
+
+}

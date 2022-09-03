@@ -7,9 +7,5 @@ header {
     box-sizing: border-box;
     padding: 20px 10px;
     gap: 10px;
-}
-
-main {
-    height: 100vh;
-    background-color: var(--color-grey-5);
+    margin-bottom: 60px;
 }
