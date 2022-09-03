@@ -1,4 +1,5 @@
 import { Modal } from "./modal.js"
+import { Requests } from "./requests.js"
 
 class Index {
     // static renderIndex() {
@@ -17,6 +18,7 @@ class Index {
             Modal.template(newLoginModal)
             Index.closeModalLogin()
             Index.closeModalSignup()
+            Index.handleLogin()
         })
     }
 
@@ -54,6 +56,24 @@ class Index {
                 modal.remove()
             }, 1000)
         })
+    }
+
+    static handleLogin() {
+        const userEmail = document.querySelector(".inputEmail")
+        const userPassword = document.querySelector(".inputPassword")
+        const btnLogin = document.querySelector(".btnLog")
+
+        btnLogin.addEventListener("click", async (event) => {
+            event.preventDefault()
+
+            const data = {
+                email: userEmail.value,
+                password: userPassword.value                
+            }
+
+            const login = await Requests.login(data)
+        })
+
     }
 }
 

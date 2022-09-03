@@ -4,7 +4,7 @@ export class Toast {
             text: text,
             duration: 2000,
             close: true,
-            gravity: "top",
+            gravity: "center",
             position: "center",
             stopOnFocus: true,
             style: {

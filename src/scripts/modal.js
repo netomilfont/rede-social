@@ -19,14 +19,17 @@ export class Modal {
         const btnPagRegister = document.createElement("button")
 
         h3TitleForm.innerText = "Login"
-        span.innerText = "Ainda não possui cadastro"
+        span.innerText = "Ainda não possui cadastro?"
         inputEmail.type = "email"
         inputEmail.placeholder = "Digite seu email"
+        inputEmail.classList.add("inputEmail")
         inputPassword.type = "password"
         inputPassword.placeholder = "Digite sua senha"
+        inputPassword.classList.add("inputPassword")
         btnLogin.innerText = "Logar"
         btnLogin.type = "submit"
         btnLogin.classList.add("btnLogin")
+        btnLogin.classList.add("btnLog")
         btnPagRegister.innerText = "Ir para página de registro"
         btnPagRegister.type = "submit"
         btnPagRegister.classList.add("btnRegister")
