@@ -30,3 +30,14 @@ button {
     margin-left: 0;
     font-size: 0.8rem;
 }
+
+.backSignupOne {
+    width: 20%;
+    height: 28px;
+    color: var(--color-grey-1);
+    background-color: var(--color-white-1);
+    margin-left: 0;
+    font-size: 0.7rem;
+    border: 1px solid #212529;
+    font-weight: 600;
+}

@@ -53,7 +53,7 @@ export class Modal {
         divForm.classList.add("divFormSignup")
         h3TitleForm.innerText = "Cadastro"
         btnBack.innerText = "Voltar"
-        btnBack.type = "submit"
+        btnBack.classList.add("backSignupOne")
         inputName.placeholder = "Seu nome"
         inputName.type = "text"
         inputEmail.placeholder= "Seu email"
@@ -66,12 +66,14 @@ export class Modal {
         inputImgPefil.type = "url"
         btnRegister.innerText = "Registrar"
         btnRegister.type = "submit"
+        btnRegister.classList.add("btnLogin")
         spanLogin.innerText = "Já possui login?"
         btnLogin.innerText = "Ir para página de login"
         btnLogin.type = "submit"
+        btnLogin.classList.add("btnRegister")
 
         divForm.append(h3TitleForm, btnBack)
-        modalForm.parentElement(divForm, inputName, inputEmail, inputPassword, inputJob, inputImgPefil, btnRegister, spanLogin, btnLogin)
+        modalForm.append(divForm, inputName, inputEmail, inputPassword, inputJob, inputImgPefil, btnRegister, spanLogin, btnLogin)
     
         return modalForm
     }   

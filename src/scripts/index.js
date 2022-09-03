@@ -9,19 +9,18 @@ class Index {
     //     }
     // }
 
-
     static handleLoginModal() {
         const loginBtn = document.querySelector("#loginBtn")
 
         loginBtn.addEventListener("click", () => {
             const newLoginModal = Modal.loginForm()
             Modal.template(newLoginModal)
-            Index.closeModal()
-            // Index.handleLoginModal()
+            Index.closeModalLogin()
+            Index.closeModalSignup()
         })
     }
 
-    static closeModal() {
+    static closeModalLogin() {
         const closeModalBtn = document.querySelector("#signupBtn")
 
         closeModalBtn.addEventListener("click", () => {
@@ -34,6 +33,29 @@ class Index {
         })
     }
 
+    static hangleSignupModal () {
+        const signupBtn = document.querySelector("#signupBtn")
+        
+        signupBtn.addEventListener("click", () => {
+            Index.closeModalLogin()
+            const newSignupModal = Modal.signupForm()
+            Modal.template(newSignupModal)
+        })
+    }
+
+    static closeModalSignup () {
+        const closeModalBtn = document.querySelector("#loginBtn")
+
+        closeModalBtn.addEventListener("click", () => {
+            const modal = document.querySelector(".modal")
+            modal.classList.add("disappear")
+
+            setTimeout(() => {
+                modal.remove()
+            }, 1000)
+        })
+    }
 }
 
 Index.handleLoginModal()
+Index.hangleSignupModal()
