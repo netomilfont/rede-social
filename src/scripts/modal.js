@@ -59,14 +59,19 @@ export class Modal {
         btnBack.classList.add("backSignupOne")
         inputName.placeholder = "Seu nome"
         inputName.type = "text"
+        inputName.classList.add("inputName")
         inputEmail.placeholder= "Seu email"
         inputEmail.type = "email"
+        inputEmail.classList.add("inputEmail")
         inputPassword.placeholder = "Sua senha"
         inputPassword.type = "password"
+        inputPassword.classList.add("inputPassword")
         inputJob.placeholder = "Qual o seu trabalho?"
         inputJob.type = "text"
+        inputJob.classList.add("inputJob")
         inputImgPefil.placeholder = "URL da imagem de perfil"
         inputImgPefil.type = "url"
+        inputImgPefil.classList.add("inputImg")
         btnRegister.innerText = "Registrar"
         btnRegister.type = "submit"
         btnRegister.classList.add("btnLogin")

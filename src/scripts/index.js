@@ -42,6 +42,8 @@ class Index {
             Index.closeModalLogin()
             const newSignupModal = Modal.signupForm()
             Modal.template(newSignupModal)
+            Index.closeModalSignup()
+            Index.handleSingup()
         })
     }
 
@@ -74,6 +76,29 @@ class Index {
             const login = await Requests.login(data)
         })
 
+    }
+
+    static handleSingup() {
+        const userName = document.querySelector(".inputName")
+        const userEmail = document.querySelector(".inputEmail")
+        const userPassword = document.querySelector(".inputPassword")
+        const userJob = document.querySelector(".inputJob")
+        const userImg = document.querySelector(".inputImg")
+        const btnRegister = document.querySelector(".btnLogin")
+
+        btnRegister.addEventListener("click", async (event) => {
+            event.preventDefault()
+
+            const data = {
+                "username": userName.value,
+                "email": userEmail.value,
+                "password": userPassword.value, 
+                "work_at": userJob.value,
+                "image": userImg.value
+            }
+
+            const signup = await Requests.signup(data)
+        })
     }
 }
 
