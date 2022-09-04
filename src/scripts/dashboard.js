@@ -1,4 +1,5 @@
 import { Requests } from "./requests.js";
+import { Toast } from "./toastify.js";
 
 export default class Postagens {
     
@@ -109,9 +110,20 @@ export default class Postagens {
 
     }
 
+    static logout() {
+        const btnLogout = document.querySelector(".btnLogout")
+        btnLogout.addEventListener("click", () => {
+            localStorage.removeItem("@kenzieSocial:token")
+            localStorage.removeItem("@kenzieSocial:user_Id")
+            Toast.create("Você foi deslogado!", "green")
+            window.location.assign("../../index.html")
+        })
+    }
+
 }
 const pages = await Requests.countPages()
 const listPost = await Requests.listPostsSocial(pages)
 Postagens.listPosts(listPost)
 Postagens.infoUser()
 Postagens.newPostUser()
+Postagens.logout()
