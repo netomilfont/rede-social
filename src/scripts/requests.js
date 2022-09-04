@@ -62,7 +62,7 @@ export class Requests {
 
     static async listPostsSocial(number) {
         const posts = await instance
-        .get(`posts/?limit=30&offset=${number}`)
+        .get(`posts/?limit=30&offset=${number - 30}`)
         .then((res) => {
             console.log(res.data)
             return res.data
