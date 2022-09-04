@@ -1,4 +1,4 @@
-import { instance } from "./axios.js";
+import { instance, instanceCad } from "./axios.js";
 import { Toast } from "./toastify.js";
 
 export class Requests {
@@ -25,7 +25,7 @@ export class Requests {
     }
 
     static async signup(data) {
-        const userSingup = await instance
+        const userSingup = await instanceCad
         .post("users/", data)
         .then(async (res) => {
             Toast.create("Cadastro realizado com sucesso!", "green")
@@ -62,8 +62,9 @@ export class Requests {
 
     static async listPostsSocial(number) {
         const posts = await instance
-        .get(`posts/?limit=10&offset=${number - 10}`)
+        .get(`posts/?limit=30&offset=${number}`)
         .then((res) => {
+            console.log(res.data)
             return res.data
         })
         .catch((err) => console.log(err))
@@ -75,7 +76,7 @@ export class Requests {
     static async userPost(data) {
         const newPost = await instance
         .post("posts/", data)
-        .then(async (res) => {
+        .then((res) => {
             Toast.create("Postagem realizada com sucesso!", "green")
             return res.data
         })
