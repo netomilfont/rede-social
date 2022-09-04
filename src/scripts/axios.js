@@ -7,3 +7,11 @@ export const instance = axios.create({
         Authorization: `Token ${token}`,
     },
 })
+
+export const instanceCad = axios.create({
+    baseURL: "https://m2-rede-social.herokuapp.com/api/",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+    },
+})
