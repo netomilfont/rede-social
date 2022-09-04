@@ -2,7 +2,7 @@ import { Requests } from "./requests.js";
 
 export default class Postagens {
     
-    static lisPosts(array) {
+    static listPosts(array) {
         const divPosts = document.querySelector(".container__posts")
         const data = array.results
 
@@ -14,7 +14,7 @@ export default class Postagens {
     }
 
     static createPost (data){
-        console.log(data)
+
         const divPostContainer = document.createElement("div")
         const divPost = document.createElement("div")
         const divImg = document.createElement("div")
@@ -85,7 +85,14 @@ export default class Postagens {
         divuserInfoDois.append(h3UserName,pUserJob)
         divUserInfo.append(divImg, divuserInfoDois, spanFollowers)
     }
+
+    // static async countPages() {
+    //     const pages = await Requests.countPages()
+
+    //     return pages
+    // }
 }
-const listPost = await Requests.listPostsSocial()
-Postagens.lisPosts(listPost)
+const pages = await Requests.countPages()
+const listPost = await Requests.listPostsSocial(pages)
+Postagens.listPosts(listPost)
 Postagens.infoUser()

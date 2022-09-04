@@ -47,13 +47,22 @@ export class Requests {
         .get(`users/${id}/`)
         .then( (res) => res.data)
         .catch((err) => console.log(err))
-        console.log(infoUser)
+        
         return infoUser
     }
 
-    static async listPostsSocial() {
+    static async countPages() {
+        const number = await instance
+        .get(`posts/`)
+        .then((res) => res.data.count)
+        .catch((err) => console.log(err))
+
+        return number
+    }
+
+    static async listPostsSocial(number) {
         const posts = await instance
-        .get(`posts/?page=1/`)
+        .get(`posts/?limit=10&offset=${parseInt(number / 10)}`)
         .then((res) => res.data)
         .catch((err) => console.log(err))
 
