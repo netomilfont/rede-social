@@ -1,9 +1,20 @@
 import { Requests } from "./requests.js";
 
 export default class Postagens {
+    
+    static lisPosts(array) {
+        const divPosts = document.querySelector(".container__posts")
+        const data = array.results
 
-    static async createPost (data){
+        data.forEach((post) => {
+            const postCard = Postagens.createPost(post)
 
+            divPosts.append(postCard)
+        })
+    }
+
+    static createPost (data){
+        console.log(data)
         const divPostContainer = document.createElement("div")
         const divPost = document.createElement("div")
         const divImg = document.createElement("div")
@@ -28,6 +39,15 @@ export default class Postagens {
         divPostInfo.classList.add("container__postInfo")
         btnOpenPost.classList.add("btnOpenPost")
         divLikePost.classList.add("container__likePost")
+
+        userImg.src = data.author.image
+        h3UserName.innerText = data.author.username
+        pUserJob.innerText = data.author.work_at
+        h2TitlePost.innerText = data.title
+        pDescriptionPost.innerText = data.description
+        btnOpenPost.innerText = "Abrir Post"
+        imgHeart.src = "../assets/heartBlack.png"
+        spanLikesCount.innerText = data.likes.length
         
         divImg.append(userImg)
         divuserInfoDois.append(h3UserName,pUserJob)
@@ -57,14 +77,15 @@ export default class Postagens {
         spanFollowers.classList.add("userFollowers")
     
         userImg.src = infoUserLogged.image
-        h3UserName = infoUserLogged.username
-        pUserJob = infoUserLogged.work_at
-        spanFollowers= infoUserLogged.followers_amount
+        h3UserName.innerText = infoUserLogged.username
+        pUserJob.innerText = infoUserLogged.work_at
+        spanFollowers.innerText = infoUserLogged.followers_amount
 
         divImg.append(userImg)
         divuserInfoDois.append(h3UserName,pUserJob)
         divUserInfo.append(divImg, divuserInfoDois, spanFollowers)
     }
 }
-
+const listPost = await Requests.listPostsSocial()
+Postagens.lisPosts(listPost)
 Postagens.infoUser()

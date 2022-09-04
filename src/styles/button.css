@@ -69,3 +69,9 @@ button {
     width: 70px;
     margin: 0px;
 }
+
+@media (min-width: 1024px) {
+    button {
+        cursor: pointer;
+    }
+}

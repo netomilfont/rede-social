@@ -50,4 +50,13 @@ export class Requests {
         console.log(infoUser)
         return infoUser
     }
+
+    static async listPostsSocial() {
+        const posts = await instance
+        .get(`posts/?page=1/`)
+        .then((res) => res.data)
+        .catch((err) => console.log(err))
+
+        return posts
+    }
 }
