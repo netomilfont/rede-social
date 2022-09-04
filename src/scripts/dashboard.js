@@ -4,7 +4,9 @@ export default class Postagens {
     
     static listPosts(array) {
         const divPosts = document.querySelector(".container__posts")
-        const data = array.results
+        const data = array.results.reverse()
+
+        divPosts.innerText = ""
 
         data.forEach((post) => {
             const postCard = Postagens.createPost(post)
@@ -86,13 +88,30 @@ export default class Postagens {
         divUserInfo.append(divImg, divuserInfoDois, spanFollowers)
     }
 
-    // static async countPages() {
-    //     const pages = await Requests.countPages()
+    static newPostUser () {
+        const userPostTitle = document.querySelector("#titlePost")
+        const userDescriptionPost = document.querySelector("#descriptionPost")
+        const btnPost = document.querySelector(".btnPostar")
 
-    //     return pages
-    // }
+        btnPost.addEventListener("click", async (event) => {
+            
+            const data = {
+                "title": userPostTitle.value,
+                "description": userDescriptionPost.value
+            }
+            
+            await Requests.userPost(data)
+            const pages = await Requests.countPages()
+            const listaPost = await Requests.listPostsSocial(pages)
+            window.location.replace("../pages/dashboard.html")
+            Postagens.listPosts(listaPost)
+        })
+
+    }
+
 }
 const pages = await Requests.countPages()
 const listPost = await Requests.listPostsSocial(pages)
 Postagens.listPosts(listPost)
 Postagens.infoUser()
+Postagens.newPostUser()

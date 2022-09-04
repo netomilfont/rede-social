@@ -62,10 +62,28 @@ export class Requests {
 
     static async listPostsSocial(number) {
         const posts = await instance
-        .get(`posts/?limit=10&offset=${parseInt(number / 10)}`)
-        .then((res) => res.data)
+        .get(`posts/?limit=10&offset=${number - 10}`)
+        .then((res) => {
+            return res.data
+        })
         .catch((err) => console.log(err))
-
+        
+        
         return posts
     }
+    
+    static async userPost(data) {
+        const newPost = await instance
+        .post("posts/", data)
+        .then(async (res) => {
+            Toast.create("Postagem realizada com sucesso!", "green")
+            return res.data
+        })
+        .catch((err) => {
+            Toast.create("Postagem não foi feita!", "red")
+        })
+
+        return newPost
+    }
+
 }
