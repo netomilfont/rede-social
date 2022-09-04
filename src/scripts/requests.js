@@ -41,4 +41,13 @@ export class Requests {
             Toast.create(err.response.data.message, "red")
         })
     }
+
+    static async infoUserLogged(id) {
+        const infoUser = await instance
+        .get(`users/${id}/`)
+        .then( (res) => res.data)
+        .catch((err) => console.log(err))
+        console.log(infoUser)
+        return infoUser
+    }
 }
