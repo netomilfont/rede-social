@@ -41,3 +41,31 @@ button {
     border: 1px solid #212529;
     font-weight: 600;
 }
+
+.btnLogout {
+    background-color: var(--color-grey-1);
+    padding: 0;
+    width: 40px;
+    font-size: 0.75rem;
+}
+
+.container__btnPost button {
+    background-color: var(--color-grey-4);
+    color: var(--color-grey-3) ;
+}
+
+.btnFollow {
+    color: var(--color-grey-1);
+    background-color: var(--color-white-1);
+    border: 1px solid #212529;
+    font-weight: 600;
+    margin: 0px;
+    height: 20px;
+}
+
+.btnOpenPost {
+    background-color: var(--color-grey-1);
+    color: var(--color-white-1);
+    width: 70px;
+    margin: 0px;
+}

@@ -3,6 +3,12 @@ h1 {
     font-weight: 500;
 }
 
+h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
 h3 {
     font-size: 1.5rem;
     font-weight: 700;
@@ -13,3 +19,19 @@ span {
     text-align: center;
 
 }
+
+.h3__dashboard {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-grey-1);
+}
+
+p {
+    font-size: 0.7rem;
+    margin-left: 2px;
+}
+
+.userFollowers {
+    margin-top: 8px;
+}
+

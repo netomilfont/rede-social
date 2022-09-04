@@ -1,0 +1,99 @@
+header {
+    margin-bottom: 25px;
+}
+main {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section {
+    width: 90%;
+    margin-bottom: 40px;
+}
+.container__createPost {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.div__userImg {
+    width: 52px;
+    height: 52px;
+}
+
+.container__userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.container__btnPost {
+    display: flex;
+    justify-content: flex-end;
+}
+
+aside {
+    width: 90%;
+}
+
+.container__suggestions {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.container__suggestionsUsers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 130px;
+    margin-bottom: 30px;
+}
+
+.container__suggestedUser {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0px 10px 0px;
+    gap: 8px;
+    width: 180px ;
+}
+
+.container__posts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container__post {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.container__userPost {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.container__postInfo {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.container__likePost {
+    width: 20px;
+    height: 17px;
+    margin-left: 20px;
+    margin-right: 5px;
+}
