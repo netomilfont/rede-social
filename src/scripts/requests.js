@@ -4,7 +4,6 @@ import { Toast } from "./toastify.js";
 export class Requests {
 
     static async login(data) {
-        console.log(data)
         const userLogin = await instance
             .post("users/login/", data)
             .then((res) => {
@@ -87,4 +86,20 @@ export class Requests {
         return newPost
     }
 
+    static async likePost(data) {
+        const like = await instance
+        .post(`likes/`, data)
+        .then((res) => {
+            Toast.create("realizado com sucesso")
+            return res.data
+        })
+        .catch((err) => console.log(err))
+    }
+
+    static async dislikePost (id) {
+        const dislike = await instance
+        .post(`likes/${id}/`)
+        .then((res) => res)
+        .catch((err) => console.log(err))
+    }
 }

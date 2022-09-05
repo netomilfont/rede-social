@@ -4,21 +4,21 @@ import { Toast } from "./toastify.js";
 export default class Postagens {
     
     static listPosts(array) {
-        const divPosts = document.querySelector(".container__posts")
+        const ulPosts = document.querySelector(".container__posts")
         const data = array.results.reverse()
 
-        divPosts.innerText = ""
+        ulPosts.innerText = ""
 
         data.forEach((post) => {
             const postCard = Postagens.createPost(post)
 
-            divPosts.append(postCard)
+            ulPosts.append(postCard)
         })
     }
 
     static createPost (data){
 
-        const divPostContainer = document.createElement("div")
+        const liPostContainer = document.createElement("li")
         const divPost = document.createElement("div")
         const divImg = document.createElement("div")
         const userImg = document.createElement("img")
@@ -33,7 +33,7 @@ export default class Postagens {
         const imgHeart = document.createElement("img")
         const spanLikesCount = document.createElement("span")
 
-        divPostContainer.classList.add("container__post")
+        liPostContainer.classList.add("container__post")
         divPost.classList.add("container__userPost")
         divImg.classList.add("div__userImg")
         divImg.classList.add("div__userImg")
@@ -42,7 +42,10 @@ export default class Postagens {
         divPostInfo.classList.add("container__postInfo")
         btnOpenPost.classList.add("btnOpenPost")
         divLikePost.classList.add("container__likePost")
-
+        imgHeart.classList.add("greyHeart")
+        spanLikesCount.classList.add("spanCount")
+        
+        liPostContainer.id = data.uuid 
         userImg.src = data.author.image
         h3UserName.innerText = data.author.username
         pUserJob.innerText = data.author.work_at
@@ -50,16 +53,17 @@ export default class Postagens {
         pDescriptionPost.innerText = data.description
         btnOpenPost.innerText = "Abrir Post"
         imgHeart.src = "../assets/heartBlack.png"
-        spanLikesCount.innerText = data.likes.length
+        imgHeart.id = data.uuid
+        spanLikesCount.innerText = Number(data.likes.length)
         
         divImg.append(userImg)
         divuserInfoDois.append(h3UserName,pUserJob)
         divPost.append(divImg, divuserInfoDois)
         divLikePost.append(imgHeart)
         divPostInfo.append(btnOpenPost, divLikePost, spanLikesCount)
-        divPostContainer.append(divPost, h2TitlePost, pDescriptionPost, divPostInfo)
+        liPostContainer.append(divPost, h2TitlePost, pDescriptionPost, divPostInfo)
 
-        return divPostContainer
+        return liPostContainer
     }
 
     static async infoUser (){
@@ -120,10 +124,49 @@ export default class Postagens {
         })
     }
 
+
+    // static checkLike(data) {
+    //     const imgHeart = document.querySelector(".greyHeart")
+    //     const userLogged = localStorage.getItem("@kenzieSocial:user_Id")
+
+    //     data.forEach((element) => {
+            
+
+    //     })
+    // }
+
+    static likePostUser () {
+        const container = document.querySelector(".container__posts")
+        const imgHeart = document.querySelector(".greyHeart")
+        const spanCount = document.querySelector(".spanCount")
+
+        container.addEventListener("click", async (event) => {
+            const idPost = event.target.id
+            
+            const data = {
+                "post_uuid": idPost
+            }
+            
+            
+            if(event.target.id == idPost && event.target.classList.contains("greyHeart") && !event.target.classList.contains("noLikeHeart")) {
+                imgHeart.classList.add("noLikeHeart")
+                spanCount.textContent++
+                imgHeart.src = "../assets/heartRed.png"
+                await Requests.likePost(data)
+                
+            } else {
+                spanCount.textContent--
+                imgHeart.src = "../assets/heartBlack.png"
+                await Requests.dislikePost(idPost)
+            }
+        })
+    }
 }
+
 const pages = await Requests.countPages()
 const listPost = await Requests.listPostsSocial(pages)
 Postagens.listPosts(listPost)
 Postagens.infoUser()
 Postagens.newPostUser()
 Postagens.logout()
+Postagens.likePostUser()
