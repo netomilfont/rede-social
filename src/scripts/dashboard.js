@@ -124,17 +124,6 @@ export default class Postagens {
         })
     }
 
-
-    // static checkLike(data) {
-    //     const imgHeart = document.querySelector(".greyHeart")
-    //     const userLogged = localStorage.getItem("@kenzieSocial:user_Id")
-
-    //     data.forEach((element) => {
-            
-
-    //     })
-    // }
-
     static likePostUser () {
         const container = document.querySelector(".container__posts")
         const imgHeart = document.querySelector(".greyHeart")

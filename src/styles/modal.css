@@ -30,6 +30,22 @@
     animation: disappearToTopLeft 1s;
 }
 
+.modalPostContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.modalPostContainer button {
+    position: absolute;
+    right: 1;
+}
+
+.modalPostContainer .container__suggestedUser {
+    margin: 0;
+}
+
+
 
 @media (min-width: 1024px) {
     .modal form {
