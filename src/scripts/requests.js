@@ -1,16 +1,15 @@
-import { instance } from "./axios.js";
+import { instance, instanceCad } from "./axios.js";
 import { Toast } from "./toastify.js";
 
 export class Requests {
 
     static async login(data) {
-        console.log(data)
         const userLogin = await instance
             .post("users/login/", data)
             .then((res) => {
                 localStorage.setItem("@kenzieSocial:user_Id", res.data.user_uuid)
                 localStorage.setItem("@kenzieSocial:token", res.data.token)
-                Toast.create("Login realizado com sucesso", "green")
+                Toast.create("Login realizado com sucesso", "#4263EB")
 
                 setTimeout(() => {
                     window.location.replace("src/pages/dashboard.html")
@@ -25,10 +24,10 @@ export class Requests {
     }
 
     static async signup(data) {
-        const userSingup = await instance
+        const userSingup = await instanceCad
         .post("users/", data)
         .then(async (res) => {
-            Toast.create("Cadastro realizado com sucesso!", "green")
+            Toast.create("Cadastro realizado com sucesso!", "#4263EB")
             const newData = {
                 email: res.data.email,
                 password: data.password
@@ -62,10 +61,53 @@ export class Requests {
 
     static async listPostsSocial(number) {
         const posts = await instance
-        .get(`posts/?limit=10&offset=${parseInt(number / 10)}`)
-        .then((res) => res.data)
+        .get(`posts/?limit=30&offset=${number - 30}`)
+        .then((res) => {
+            return res.data
+        })
+        .catch((err) => console.log(err))
+        
+        
+        return posts
+    }
+    
+    static async userPost(data) {
+        const newPost = await instance
+        .post("posts/", data)
+        .then((res) => {
+            Toast.create("Postagem realizada com sucesso!", "#4263EB")
+            return res.data
+        })
+        .catch((err) => {
+            Toast.create("Postagem não foi feita!", "red")
+        })
+
+        return newPost
+    }
+
+    static async likePost(data) {
+        const like = await instance
+        .post(`likes/`, data)
+        .then((res) => {
+            Toast.create("realizado com sucesso", "#4263EB")
+            return res.data
+        })
+        .catch((err) => console.log(err))
+    }
+
+    static async dislikePost (id) {
+        const dislike = await instance
+        .post(`likes/${id}/`)
+        .then((res) => res)
+        .catch((err) => console.log(err))
+    }
+
+    static async listUsers() {
+        const users = await instance
+        .get(`users/?limit=999&offset=6`)
+        .then((res) => res.data.results)
         .catch((err) => console.log(err))
 
-        return posts
+        return users
     }
 }

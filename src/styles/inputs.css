@@ -19,3 +19,13 @@ textarea {
     margin: 15px 0px;
     resize: none;
 }
+
+@media (min-width: 1024px) {
+    input:focus {
+        outline: 2px solid var(--color-brand-1);
+    }
+
+    textarea:focus {
+        outline: 2px solid var(--color-brand-1);
+    }
+}
