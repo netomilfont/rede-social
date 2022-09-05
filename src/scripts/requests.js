@@ -105,7 +105,7 @@ export class Requests {
 
     static async listUsers() {
         const users = await instance
-        .get(`users/?limit=100&offset=6`)
+        .get(`users/?limit=999&offset=6`)
         .then((res) => res.data.results)
         .catch((err) => console.log(err))
 
