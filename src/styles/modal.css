@@ -30,6 +30,12 @@
     animation: disappearToTopLeft 1s;
 }
 
+
+@media (min-width: 1024px) {
+    .modal form {
+        width: 30%;
+    }
+}
 /*  ANIMAÇÕES MODAL */
 
 @keyframes appearFromTopLeft {

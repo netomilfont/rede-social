@@ -9,7 +9,7 @@ export class Requests {
             .then((res) => {
                 localStorage.setItem("@kenzieSocial:user_Id", res.data.user_uuid)
                 localStorage.setItem("@kenzieSocial:token", res.data.token)
-                Toast.create("Login realizado com sucesso", "green")
+                Toast.create("Login realizado com sucesso", "#4263EB")
 
                 setTimeout(() => {
                     window.location.replace("src/pages/dashboard.html")
@@ -27,7 +27,7 @@ export class Requests {
         const userSingup = await instanceCad
         .post("users/", data)
         .then(async (res) => {
-            Toast.create("Cadastro realizado com sucesso!", "green")
+            Toast.create("Cadastro realizado com sucesso!", "#4263EB")
             const newData = {
                 email: res.data.email,
                 password: data.password
@@ -76,7 +76,7 @@ export class Requests {
         const newPost = await instance
         .post("posts/", data)
         .then((res) => {
-            Toast.create("Postagem realizada com sucesso!", "green")
+            Toast.create("Postagem realizada com sucesso!", "#4263EB")
             return res.data
         })
         .catch((err) => {
@@ -90,7 +90,7 @@ export class Requests {
         const like = await instance
         .post(`likes/`, data)
         .then((res) => {
-            Toast.create("realizado com sucesso")
+            Toast.create("realizado com sucesso", "#4263EB")
             return res.data
         })
         .catch((err) => console.log(err))
