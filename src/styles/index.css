@@ -9,3 +9,10 @@ header {
     gap: 10px;
     margin-bottom: 60px;
 }
+
+@media (min-width: 1024px) {
+
+    header {
+        padding: 20px 40px;
+    }
+}

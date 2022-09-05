@@ -74,4 +74,28 @@ button {
     button {
         cursor: pointer;
     }
+
+    .btnOpenPost:hover {
+        background-color: var(--color-grey-0);
+    }
+
+    .btnLogin:hover {
+        background-color: var(--color-brand-2);
+    }
+
+    .btnFollow {
+        margin-right: 40px;
+    }
+
+    .btnFollow:hover {
+        color: var(--color-brand-1);
+        background-color: #EDF2FF;
+        border: 1px solid var(--color-brand-1)
+    }
+
+    .btnFollow:focus {
+        background-color: var(--color-brand-1);
+        color: var(--color-white-1);
+        border: 1px solid var(--color-brand-1);
+    }
 }

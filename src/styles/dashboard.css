@@ -11,11 +11,22 @@ main {
 section {
     width: 90%;
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+
 .container__createPost {
     display: flex;
     margin-bottom: 20px;
     gap: 20px;
+}
+.container__postWithAside {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .div__userImg {
@@ -31,7 +42,6 @@ section {
 }
 
 .div__userImg img {
-
     border-radius: 50%;
 }
 
@@ -47,7 +57,11 @@ img {
 }
 
 aside {
-    width: 90%;
+    width: 100%;
+}
+
+.container__postar {
+    width: 100%;
 }
 
 .container__suggestions {
@@ -78,6 +92,7 @@ aside {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .container__post {
@@ -107,4 +122,58 @@ aside {
     height: 17px;
     margin-left: 20px;
     margin-right: 5px;
+}
+
+@media (min-width: 1024px) {
+
+    header {
+        position: fixed;
+        top: 0;
+    }
+
+    main {
+        align-items: flex-start;
+        margin-top: 100px;
+        
+    }
+
+    section {
+        width: 56%;
+        margin: 0 70px;
+    }
+
+    .container__postar {
+        width: 56%;
+    }
+    
+    .container__postWithAside {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .container__suggestionsUsers {
+        justify-content: flex-start;
+        width: 30%;
+        position: fixed;
+        right: 16px;
+    }
+
+    .container__suggestions {
+        flex-direction: column;
+        gap: 10px;
+        overflow-x: hidden;
+    }
+
+    .container__sugDesktop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .container__likePost:hover img {
+        cursor: pointer;
+    }
+
+    
 }
