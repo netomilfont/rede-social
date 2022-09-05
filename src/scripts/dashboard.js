@@ -161,8 +161,65 @@ export default class Postagens {
             }
         })
     }
-}
 
+    static createSuggestUser(user) {
+        const li = document.createElement("li")
+        const divSug =  document.createElement("div")
+        const divImg = document.createElement("div")
+        const img = document.createElement("img")
+        const divUserInfo = document.createElement("div")
+        const h3TitleUserName = document.createElement("h3")
+        const pUserJob = document.createElement("p")
+        const btnFollow = document.createElement("button")
+
+        li.classList.add("container__sugDesktop")
+        divSug.classList.add("container__suggestedUser")
+        divImg.classList.add("div__userImg")
+        divUserInfo.classList.add("container__userInfo")
+        h3TitleUserName.classList.add("h3__dashboard")
+        btnFollow.classList.add("btnFollow")
+
+        img.src = user.image
+        h3TitleUserName.innerText = user.username
+        pUserJob.innerText = user.work_at
+        btnFollow.innerText = "Seguir"
+
+        divImg.append(img)
+        divUserInfo.append(h3TitleUserName,pUserJob)
+        divSug.append(divImg, divUserInfo)
+        li.append(divSug, btnFollow)
+
+        return li
+    }
+
+    static listSuggestUser(array) {
+        const ul = document.querySelector(".container__suggestions")
+
+        ul.innerText = ""
+
+        array.forEach((user) => {
+            
+            const sugUser = Postagens.createSuggestUser(user)
+
+            ul.append(sugUser)
+        })
+    }
+
+    static createListtUser(array) {
+
+        const newArray = []
+
+        for(let i = 0; newArray.length < 3; i++) {
+
+            const user = array[Math.floor(Math.random() * array.length)]
+
+            newArray.push(user)
+        }
+
+        Postagens.listSuggestUser(newArray)
+    }
+}
+const users = await Requests.listUsers()
 const pages = await Requests.countPages()
 const listPost = await Requests.listPostsSocial(pages)
 Postagens.listPosts(listPost)
@@ -170,3 +227,4 @@ Postagens.infoUser()
 Postagens.newPostUser()
 Postagens.logout()
 Postagens.likePostUser()
+Postagens.createListtUser(users)
