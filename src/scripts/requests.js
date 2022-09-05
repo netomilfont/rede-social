@@ -102,4 +102,13 @@ export class Requests {
         .then((res) => res)
         .catch((err) => console.log(err))
     }
+
+    static async listUsers() {
+        const users = await instance
+        .get(`users/?limit=100&offset=6`)
+        .then((res) => res.data.results)
+        .catch((err) => console.log(err))
+
+        return users
+    }
 }
