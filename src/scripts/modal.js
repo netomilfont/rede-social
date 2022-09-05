@@ -84,6 +84,56 @@ export class Modal {
         modalForm.append(divForm, inputName, inputEmail, inputPassword, inputJob, inputImgPefil, btnRegister, spanLogin, btnLogin)
     
         return modalForm
-    }   
+    } 
+
+    static showModal() {
+        const modal = document.querySelector("btnOpenPost")
+    }
+
+    static modalPost (post) {
+        const liPostContainer = document.createElement("li")
+        const divPost = document.createElement("div")
+        const divImg = document.createElement("div")
+        const userImg = document.createElement("img")
+        const divuserInfoDois = document.createElement("div")
+        const h3UserName = document.createElement("h3")
+        const pUserJob = document.createElement("p")
+        const h2TitlePost = document.createElement("h2")
+        const pDescriptionPost = document.createElement("p")
+        const divPostInfo = document.createElement("div")
+        const btnOpenPost = document.createElement("button")
+        const divLikePost = document.createElement("div")
+        const imgHeart = document.createElement("img")
+        const spanLikesCount = document.createElement("span")
+
+        liPostContainer.classList.add("container__post")
+        divPost.classList.add("container__userPost")
+        divImg.classList.add("div__userImg")
+        divImg.classList.add("div__userImg")
+        divuserInfoDois.classList.add("container__userInfo")
+        h3UserName.classList.add("h3__dashboard")
+        divPostInfo.classList.add("container__postInfo")
+        
+        liPostContainer.id = data.uuid 
+        userImg.src = data.author.image
+        h3UserName.innerText = data.author.username
+        pUserJob.innerText = data.author.work_at
+        h2TitlePost.innerText = data.title
+        pDescriptionPost.innerText = data.description
+        btnOpenPost.innerText = "Abrir Post"
+        imgHeart.src = "../assets/heartBlack.png"
+        imgHeart.id = data.uuid
+        spanLikesCount.innerText = Number(data.likes.length)
+        
+        divImg.append(userImg)
+        divuserInfoDois.append(h3UserName,pUserJob)
+        divPost.append(divImg, divuserInfoDois)
+        divLikePost.append(imgHeart)
+        divPostInfo.append(btnOpenPost, divLikePost, spanLikesCount)
+        liPostContainer.append(divPost, h2TitlePost, pDescriptionPost, divPostInfo)
+
+        return liPostContainer
+
+    }
 
 }

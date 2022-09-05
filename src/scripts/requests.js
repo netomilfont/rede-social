@@ -16,7 +16,6 @@ export class Requests {
                 },900)
             })
             .catch((err) => {
-                console.log(err)
                 Toast.create("Essa conta não existe, logo não pode acessar a página dos posts", "red")
             })
 
